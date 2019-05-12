@@ -1,11 +1,60 @@
 <!DOCTYPE html>
 <html>
-<head>
-   <meta charset="UTF-8">
-   <title>Rock, Paper, Scissors!</title>
-</head>
-<body>
-   <script>
-   </script>
-</body>
+   <head>
+      <meta charset="UTF-8">
+      <title>Rock, Paper, Scissors!</title>
+   </head>
+   
+   <body>
+      <script>
+         function capitalize(str) {
+            const firstLetter = str.slice(0, 1);
+            const capitalized = firstLetter.toUpperCase();
+            return str.replace(firstLetter, capitalized);
+         }
+
+         function computerPlay() {
+            const random = Math.random();
+            if (random < (1 / 3)) {
+               return "rock";
+            } else if (random < (2 / 3)) {
+               return "paper";
+            } else {
+               return "scissors";
+            }
+         }
+
+         function playRound(playerSelection, computerSelection) {
+            const player = playerSelection.toLowerCase();
+            const com = computerSelection; // assignment to not be verbose
+            const playerCap = capitalize(player);
+            const comCap = capitalize(com);
+            const win = "You win! " + playerCap + "(you) beats " + comCap + "(com)";
+            const lose = "You lose! " + comCap + "(com) beats " + playerCap + "(you)";
+            // gotta hardcode the cases man
+            switch (true) {
+               case player === com: 
+                  return "It's a draw! Both of you chose " + playerCap;
+                  break;
+               case player === "paper" && com === "rock":
+                  return win;
+                  break;
+               case player === "rock" && com === "scissors":
+                  return win;
+                  break;
+               case player === "scissors" && com === "paper":
+                  return win;
+                  break;
+               default:
+                  // in all other cases, we lose :(
+                  return lose;
+            }
+         }
+         /*
+         const playerSelection = 'rock';
+         const computerSelection = computerPlay();
+         console.log(playRound(playerSelection, computerSelection));
+         */
+      </script>
+   </body>
 </html>
