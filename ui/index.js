@@ -1,3 +1,7 @@
+let drawCount = 0;
+let playWinCount = 0;
+let comWinCount = 0;
+
 // helper function to make things nice
 function capitalize(str) {
   const firstLetter = str.slice(0, 1);
@@ -60,42 +64,12 @@ function getOutcome(player, com) {
   }
 }
 
-function game() {
-  let drawCount = 0;
-  let playerWinCount = 0;
-  let comWinCount = 0;
-  for (let i = 0; i < 5; i++) {
-    const roundNumber = "Round " + (i + 1);
-    const player = prompt(roundNumber + ": Choose 'rock', 'paper', or 'scissors'");
-    const com = computerPlay();
-    console.log(roundNumber + ": " + playRound(player, com));
-    switch (getOutcome(player, com)) {
-      case 0:
-        drawCount++;
-        break;
-      case 1:
-        playerWinCount++;
-        break;
-      case 2:
-        comWinCount++;
-        break;
-      default:
-        console.log("Something went wrong...");
-    }
-  }
-  const announcement = playerWinCount === comWinCount
-    ? "It's a draw!"
-    : playerWinCount > comWinCount
-    ? "Player wins!"
-    : "Computer wins!";
-  console.log("The score is as follows:");
-  console.log("Player: " + playerWinCount);
-  console.log("Computer: " + comWinCount);
-  console.log("Draws: " + drawCount);
-  console.log("So.. " + announcement);
-}
-/*
-   const playerSelection = 'rock';
-   const computerSelection = computerPlay();
-   console.log(playRound(playerSelection, computerSelection));
- */
+// Event Listeners:
+const rockBtn = document.querySelector("#rock");
+const scissorsBtn = document.querySelector("#scissors");
+const paperBtn = document.querySelector("#paper");
+
+rockBtn.addEventListener("click", e => console.log(e));
+scissorsBtn.addEventListener("click", e => console.log(e));
+paperBtn.addEventListener("click", e => console.log(e));
+
