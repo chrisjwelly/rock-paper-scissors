@@ -30,16 +30,28 @@ function playRound(playerSelection, computerSelection) {
   // gotta hardcode the cases man
   switch (getOutcome(player, com)) {
     case 0:
-      return "It's a draw! Both of you chose " + playerCap;
+      console.log("It's a draw! Both of you chose " + playerCap);
+      drawCount++;
+      drawCountRendered.textContent = drawCount;
       break;
     case 1:
-      return win;
+      console.log(win);
+      playWinCount++;
+      playWinCountRendered.textContent = playWinCount;
       break;
     case 2:
-      return lose;
+      console.log(lose);
+      comWinCount++;
+      comWinCountRendered.textContent = comWinCount;
       break;
     default:
       return "Something went wrong";
+  }
+  if (comWinCount === 5 || playWinCount === 5) {
+    const winner = comWinCount > playWinCount
+                   ? "Computer "
+                   : "Player ";
+    result.textContent = winner + "wins overall!";
   }
 }
 
@@ -66,10 +78,15 @@ function getOutcome(player, com) {
 
 // Event Listeners:
 const rockBtn = document.querySelector("#rock");
-const scissorsBtn = document.querySelector("#scissors");
 const paperBtn = document.querySelector("#paper");
+const scissorsBtn = document.querySelector("#scissors");
 
-rockBtn.addEventListener("click", e => console.log(e));
-scissorsBtn.addEventListener("click", e => console.log(e));
-paperBtn.addEventListener("click", e => console.log(e));
+const playWinCountRendered = document.querySelector("#player-win");
+const comWinCountRendered = document.querySelector("#com-win");
+const drawCountRendered = document.querySelector("#draw");
+const result = document.querySelector("#result");
+
+rockBtn.addEventListener("click", e => playRound("rock", computerPlay()));
+paperBtn.addEventListener("click", e => playRound("paper", computerPlay()));
+scissorsBtn.addEventListener("click", e => playRound("scissors", computerPlay()));
 
