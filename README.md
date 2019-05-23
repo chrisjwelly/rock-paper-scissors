@@ -1,3 +1,5 @@
+Note: This project has been moved [here](https://github.com/chrisjwelly/odin-webdev101/tree/master/rock-paper-scissors)
+
 # Rock, Paper, Scissors
 A project [task](https://www.theodinproject.com/courses/web-development-101/lessons/rock-paper-scissors?ref=lnav#assignment) in [The Odin Project](https://www.theodinproject.com).
 
